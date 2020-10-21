@@ -1,0 +1,103 @@
+.room{
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    border-right: 2px solid var(--twitter-background);
+    border-left: 2px solid var(--twitter-background);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.room__header{
+    width: 100%;
+    position: sticky;
+    border-bottom: 2px solid lightgray;
+    height: 40px;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.room__chat{
+    overflow-y: scroll;
+    padding-top: 20px;
+    width: 100%;
+}
+
+
+.message{
+    border-radius: 10px;
+    clear: both;
+    line-height: 18px;
+    font-size: 15px;
+    padding: 8px;
+    position: relative;
+    margin: 8px 0;
+    max-width: 60%;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+}
+
+.message.sent > .message__user{
+    position: absolute;
+    top: -20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+}
+
+.message.received > .message__user{
+    position: absolute;
+    top: -20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+    right: 5px;
+}
+
+.message.received{
+    background: lightgray;
+    float: left;
+    margin-left: 20px;
+}
+
+.message.sent {
+    background: #e1ffc7;
+    float: right;
+    margin-right: 20px;
+}
+
+.message > p{
+    margin: 0;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.message > span{
+    font-size: 10px;
+    font-weight: 400;
+    color: gray;
+}
+
+
+.room__post{
+    width: 100%;
+    min-width: fit-content;
+    left: 25%;
+    position: sticky;
+    bottom: 5px;
+    background-color: white;
+    border-top: 2px solid var(--twitter-background);
+    border-bottom: 2px solid var(--twitter-background);
+    height: 65px;
+}
+
+.room__post > input{
+    border: none;
+    width: 85%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 25px 0;
+}
