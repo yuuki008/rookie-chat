@@ -1,11 +1,10 @@
-import React, { useState, useCallback, useContext, useEffect, Fragment} from 'react'
+import React, { useState, useCallback, useContext, useEffect} from 'react'
 import {db} from '../firebase/index'
 import '../assets/Room.css'
 import { AuthContext } from '../AuthWrapper'
 import {FirebaseTimestamp} from '../firebase/index';
 import Button from '@material-ui/core/Button';
 import {makeStyles} from '@material-ui/styles'
-import {signOut} from '../AuthWrapper'
 import { auth } from '../firebase/index';
 
 const useStyles = makeStyles({
@@ -26,6 +25,7 @@ const useStyles = makeStyles({
 const Room = (props) => {
     const user = useContext(AuthContext)
     const classes = useStyles()
+
     const [message, setMessage] = useState(''),
           [messages, setMessages] = useState([]);
 
@@ -43,10 +43,11 @@ const Room = (props) => {
         auth.signOut()
         .then(() => {
             props.history.push('/signin')
+            setMessages([])
         })
     }
 
-    const handleKeyDown = () => {
+    const SubmitMessage = () => {
         if(message){
             const commentRef = db.collection("comment").doc()
             const commentId = commentRef.id
@@ -110,11 +111,10 @@ const Room = (props) => {
                     placeholder="メッセージを送信する"
                     value={message}
                     onChange={(event) => inputMessage(event)}
-                    onSubmit={(event) => handleKeyDown(event)}
                     />
                     <Button
                     className={classes.button}
-                    onClick={() => handleKeyDown()}
+                    onClick={() => SubmitMessage()}
                     >
                         送信
                     </Button>

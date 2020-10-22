@@ -1,18 +1,16 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import {db, auth} from './firebase/index'
 
 export const AuthContext = createContext()
 
 
-export const AuthProvider = ({props, children}) => {
+export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
-    const path = window.location.pathname
     
     const signOut = () => {
         auth.signOut()
         .then(() => {
             setUser(null)
-            props.history.push('/signin')
         })
     }
     
@@ -25,10 +23,6 @@ export const AuthProvider = ({props, children}) => {
                 const data = snapshot.data()
                 setUser(data)
             })
-        }else{
-            if(path === "/"){
-                props.hisotry.push('/signin')
-            }
         }
         })
     },[])

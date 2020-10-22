@@ -35,7 +35,7 @@ function App() {
             <Route exact path="/signup" component={SignUp}/>
             <Route exact path="/signin" component={SignIn} />
             <Route exact path="/reset" component={Reset} />
-            <Route path='/' component={Room} />
+            <LogginRoute path='/' component={Room} />
           </Switch>
         </Router>
       </AuthProvider>

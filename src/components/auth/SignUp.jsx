@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react'
 import { auth, db, FirebaseTimestamp } from '../../firebase';
 import PrimaryButton from '../UIkit/PrimaryButton'
 import TextInput from '../UIkit/TextInput';
-import {withRouter} from 'react-router'
 
 const SignUp = (props) => {
     const [username, setUsername] = useState(""),
